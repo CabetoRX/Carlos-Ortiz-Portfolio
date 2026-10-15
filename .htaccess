@@ -1,0 +1,11 @@
+# Canonical public domain; both domains serve this same directory in Hostinger.
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} ^(?:www\.)?carlosortiz\.site(?::[0-9]+)?$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www\.carlosalbertoortizloaiza\.com(?::[0-9]+)?$ [NC]
+RewriteRule ^ https://carlosalbertoortizloaiza.com%{REQUEST_URI} [R=301,L,NE]
+
+RewriteCond %{HTTP_HOST} ^carlosalbertoortizloaiza\.com(?::[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !^https$ [NC]
+RewriteRule ^ https://carlosalbertoortizloaiza.com%{REQUEST_URI} [R=301,L,NE]
